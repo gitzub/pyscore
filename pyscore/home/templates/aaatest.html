@@ -1,0 +1,121 @@
+<!doctype html>
+<html style="height: 100%; width: 100%;">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title></title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+        crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.31.3/js/jquery.tablesorter.min.js"
+        integrity="sha512-qzgd5cYSZcosqpzpn7zF2ZId8f/8CHmFKZ8j7mU4OUXTNRd5g+ZHBPsgKEwoqxCtdQvExE5LprwwPAgoicguNg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.31.3/css/theme.blue.min.css"
+        integrity="sha512-jJ9r3lTLaH5XXa9ZOsCQU8kLvxdAVzyTWO/pnzdZrshJQfnw1oevJFpoyCDr7K1lqt1hUgqoxA5e2PctVtlSTg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        td,
+        th {
+            text-align: center;
+            font-size: 1.3rem !important;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Gamelist 내역</h1>
+    <hr>
+    <center class="row">
+        <div class="col-1"></div>
+        <div class="col-9">
+            <form action="" method="get">
+                <div class="row">
+                    <div class="col-auto"></div>
+                    <div class="col-auto">
+                        <h3>날짜</h3>
+                    </div>
+                    <div class="col-auto">
+                        <input type="month" name="start" id="start" class="form-control" value="{{start}}">
+                    </div>
+                    <div class="col-auto">
+                        <h3> ~ </h3>
+                    </div>
+                    <div class="col-auto">
+                        <input type="month" name="end" id="end" class="form-control" value="{{end}}">
+                    </div>
+                    <div class="col-auto">
+                        <button type="submit" class="btn btn-primary">조회</button>
+                    </div>
+                </div>
+                <h3>검색창(aaatest_detail.html 파일에 포함된 내용들 검색)</h3>
+            </form>
+            <hr>
+
+            <table id="myTable" class="tablesorter tablesorter-blue">
+                <thead>
+                    <tr>
+                        <th>횟수</th>
+                        <th>날짜</th>
+                        <th>메모</th>
+                        <th>쿠폰합산</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% if mylist %}
+                    {% for value in mylist %}
+                    <tr onClick="location.href='{% url 'gamelist_detail' pk=value.pk %}'" style="cursor:pointer;">
+                        <td>{{ forloop.counter }}</td>
+                        <td>{{ value.gamedate }}</td>
+                        <td>{{ value.gamememo }}</td>
+                        <td>{{ value.coupon }}</td>
+                    </tr>
+                    {% endfor %}
+                    {% endif %}
+                </tbody>
+            </table>
+        </div>
+        <div class="col-1"></div>
+    </center>
+    <script>
+        $(function () {
+            $("#myTable").tablesorter();
+        });
+    </script>
+</body>
+
+
+
+
+<!-- <body>
+    <h1>Gamelist 내역</h1>
+    <hr>
+
+    <table id="myTable" class="tablesorter tablesorter-blue">
+        <thead>
+            <tr>
+                <th>날짜</th>
+                <th>메모</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% if Gamelist %}
+            {% for value in Gamelist %}
+            <tr onClick="location.href='{% url 'gamelist_detail' pk=value.pk %}'" style="cursor:pointer;">
+                <td>{{ value.gamedate }}</td>
+                <td>{{ value.gamememo }}</td>
+            </tr>
+            {% endfor %}
+            {% else %}
+            <p>내역이 없습니다.</p>
+            {% endif %}
+        </tbody>
+    </table>
+
+</body> -->
