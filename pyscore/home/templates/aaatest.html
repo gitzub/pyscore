@@ -13,25 +13,14 @@
         crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"
         integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.31.3/js/jquery.tablesorter.min.js"
-        integrity="sha512-qzgd5cYSZcosqpzpn7zF2ZId8f/8CHmFKZ8j7mU4OUXTNRd5g+ZHBPsgKEwoqxCtdQvExE5LprwwPAgoicguNg=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.31.3/css/theme.blue.min.css"
-        integrity="sha512-jJ9r3lTLaH5XXa9ZOsCQU8kLvxdAVzyTWO/pnzdZrshJQfnw1oevJFpoyCDr7K1lqt1hUgqoxA5e2PctVtlSTg=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <style>
-        td,
-        th {
-            text-align: center;
-            font-size: 1.3rem !important;
-        }
-    </style>
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css"/>
 </head>
 
 <body>
     <h1>Gamelist 내역</h1>
     <hr>
+
     <center class="row">
         <div class="col-1"></div>
         <div class="col-9">
@@ -54,14 +43,11 @@
                         <button type="submit" class="btn btn-primary">조회</button>
                     </div>
                 </div>
-                <h3>검색창(aaatest_detail.html 파일에 포함된 내용들 검색)</h3>
             </form>
             <hr>
-            
     <p>총 쿠폰 합산 : </p>
     <p>총 인원 합산 : </p>
-            
-            <table id="myTable" class="tablesorter tablesorter-blue">
+            <table id="myTable" class="display">
                 <thead>
                     <tr>
                         <th>횟수</th>
@@ -89,9 +75,9 @@
         <div class="col-1"></div>
     </center>
     <script>
-        $(function () {
-            $("#myTable").tablesorter();
-        });
+        $(document).ready( function () {
+            $('#myTable').DataTable();
+        } );
     </script>
 </body>
 
