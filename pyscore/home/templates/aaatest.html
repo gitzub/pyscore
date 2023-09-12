@@ -57,7 +57,10 @@
                 <h3>검색창(aaatest_detail.html 파일에 포함된 내용들 검색)</h3>
             </form>
             <hr>
-
+            
+    <p>총 쿠폰 합산 : </p>
+    <p>총 인원 합산 : </p>
+            
             <table id="myTable" class="tablesorter tablesorter-blue">
                 <thead>
                     <tr>
@@ -65,6 +68,7 @@
                         <th>날짜</th>
                         <th>메모</th>
                         <th>쿠폰합산</th>
+                        <th>인원합산</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -74,7 +78,8 @@
                         <td>{{ forloop.counter }}</td>
                         <td>{{ value.gamedate }}</td>
                         <td>{{ value.gamememo }}</td>
-                        <td>{{ value.coupon }}</td>
+                        <td>{{ value.coupon }}장</td>
+                        <td>{{ value.appliers_Score_foreignkey.count }}명</td>
                     </tr>
                     {% endfor %}
                     {% endif %}
